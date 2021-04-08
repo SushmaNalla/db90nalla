@@ -2,10 +2,11 @@ extends layout
 
 block content
   h1= title
-  - let result=[{name:"Twenty Yawns",price:35.6,author:"Jane Smiley"},{name:"wings Of Fire",price:40,author:"APJ Abdul Kalam"},{name:"Two states",price:15,author:"Chetan Bhagat"}]
+  //- let result=[{name:"Twenty Yawns",price:35.6,author:"Jane Smiley"},{name:"wings Of Fire",price:40,author:"APJ Abdul Kalam"},{name:"Two states",price:15,author:"Chetan Bhagat"}]
+  - let item = results
   div(class="container-fluid mt-3") 
   div(class="row") 
-    each book,index in result
+    each book,index in item
       div(class="col-sm-4 bg-info m-1 p-3" style=("font-weight:bolder") onclick=`buy(${index})`) #{book.name} - #{book.price} - #{book.author}
   script.
      
