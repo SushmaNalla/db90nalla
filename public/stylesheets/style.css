@@ -6,3 +6,32 @@ body {
 a {
   color: #00B7FF;
 }
+.costumeAttr {
+  background-color: aquamarine;
+  width: 120px;
+}
+
+#myTitle{
+  color: grey;
+  font-weight: 650;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-decoration: underline;
+}
+
+.ctbook{
+  margin-right: 2px;
+  margin-bottom: 0;
+  padding: 10px;
+  justify-content:center;
+  font-weight: bold;
+  border-right: 2px solid blue;
+  border-top: 2px solid rgb(140, 0, 255);
+}
+.imp{
+    border-top: 2px solid blue;
+    width: 40%;
+}
+.ctbooks:hover{
+  color: black;
+}
+
