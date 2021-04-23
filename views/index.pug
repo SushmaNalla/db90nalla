@@ -1,14 +1,11 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}, web applications and services
-  button(type="button", class="btn btn-success" onclick="update()") Click Here
-  div(id="target" class="container text-center m-2 p-3" style="color:red;font-weight:700; background-color:lightblue;") Display
-  script. 
-      var client_count=0 
-      function update(){
-        client_count++;
-        document.getElementById("target").innerHTML=`Value now ${client_count}`
-        }
-  a(href="/book") go to book
+  if (!user)
+    a(href="/login") Login
+    br
+    a(href="/register") Register
+  if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/book") Take me to book
+    br
+    a(href="/logout") Logout

@@ -2,15 +2,26 @@ extends layout
 
 block content
   h1= title
-  //- let result=[{name:"Twenty Yawns",price:35.6,author:"Jane Smiley"},{name:"wings Of Fire",price:40,author:"APJ Abdul Kalam"},{name:"Two states",price:15,author:"Chetan Bhagat"}]
-  - let item = results
-  div(class="container-fluid mt-3") 
-  div(class="row") 
-    each book,index in item
-      div(class="col-sm-4 bg-info m-1 p-3" style=("font-weight:bolder") onclick=`buy(${index})`) #{book.name} - #{book.price} - #{book.author}
+  - let books=results
+  - let destinationcreate = `dispatchCreate(\"/book/create\")`
+  div(class="container-fluid")
+    button.btn( class="btn-primary ml-1 btn-lg", onclick= destinationcreate) Create
+  div(class="row m-1")
+    each book,index in books
+      - let destinationupdate = `dispatch(\"/book/update?id=${book._id}\")`
+      - let destinationdetail =   `dispatch(\"/book/detail?id=${book._id}\")`
+      - let destinationdelete = `dispatchDelete(\"/book/delete?id=${book._id}\")`
+        div(class="col-sm-4  m-1" style=("font-weight:bolder")) #{book.name} - #{book.price} - #{book.author}
+          button.btn( class="btn-secondary ml-1", onclick= destinationdetail) Detail
+          button.btn( class="btn-info ml-1", onclick= destinationupdate) Update
+          button.btn( class="btn-danger ml-1", onclick= destinationdelete) Delete
   script.
-     
-      function buy(itemNo)
-        {
-          alert(`You purchased Item ${itemNo+1}`)
-        }
+      function dispatch(path){
+      window.location.href=path
+      }
+      function dispatchCreate(path){
+        window.location.href=path
+      }
+      function dispatchDelete(path){
+        window.location.href=path
+      }

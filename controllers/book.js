@@ -39,8 +39,8 @@ exports.book_create_post = async function (req, res) {
         res.send(result);
     }
     catch (err) {
-        res.send(`{"error": ${err}}`)
-        res.status(500);
+        res.send(err)
+        res.status(500)
     }
 };
 // Handle Book delete form on DELETE.

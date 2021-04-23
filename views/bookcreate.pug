@@ -2,7 +2,7 @@ extends layout
 
 block content
   h1= title
-
+  div#errors(style:{display:block;}) 
   form(id='bookForm', action="/resource/resource/book", method="POST")
     div.form-group
         label.costumeAttr(for='name') Book name
@@ -23,10 +23,15 @@ block content
         method: 'POST',
         body: new URLSearchParams(new FormData(event.target)) // event.target is the form
       }).then((resp) => {
+         document.getElementById("errors").style.display="block"
         return resp.json(); // or resp.text() or whatever the server sends
       }).then((body) => {
-        alert("Save succeded")
-        // TODO handle body
+         if(body.name){
+          document.getElementById("errors").innerHTML=`${body.name}  \n ${body.message}\n`;
+          alert("Save Failed")
+        }else{
+           alert("Save succeded")
+        }
       }).catch((error) => {
         // TODO handle error
         alert("Save failed " + error )

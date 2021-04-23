@@ -3,20 +3,23 @@ extends layout
 block content
   h1= title
 
-  - let bookid = toShow._id
-  - let bookName = toShow.name
-  - let bookPrice = toShow.price
-  - let bookAuthor = toShow.author
-  div
-    div.row
-      div(class='bookAttr mr-3') book ID is:
-      div(class='ctbook imp') #{bookid}
-    div.row
-      div(class='bookAttr mr-3') book name is:
-      div(class='ctbook') #{bookName}
-    div.row
-      div(class='bookAttr mr-3') book price is:
-      div(class='ctbook') #{bookPrice}
-    div.row
-      div(class='bookAttr mr-3') book Author is:
-      div(class='ctbook') #{bookAuthor}
+  if (toShow == null)
+    h2 No instance to show details
+  else
+    - let bookid = toShow._id
+    - let bookName = toShow.name
+    - let bookPrice = toShow.price
+    - let bookAuthor = toShow.author
+    div
+      div.row
+        div(class='bookAttr mr-3') book ID is:
+        div(class='ctbook imp') #{bookid}
+      div.row
+        div(class='bookAttr mr-3') book name is:
+        div(class='ctbook') #{bookName}
+      div.row
+        div(class='bookAttr mr-3') book price is:
+        div(class='ctbook') #{bookPrice}
+      div.row
+        div(class='bookAttr mr-3') book Author is:
+        div(class='ctbook') #{bookAuthor}
